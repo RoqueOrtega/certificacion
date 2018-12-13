@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--<!DOCTYPE hibernate-configuration PUBLIC 
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">-->
+<!--
+DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+Contributor(s):
+-->
+<hibernate-configuration>
+  <session-factory>
+    <!-- Dialecto de la base de datos -->
+    <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <!-- Clase de Driver de la base de datos -->
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+            
+    <!-- Datos para la conexion a la base de datos en la PC DBSystem -->
+    <property name="connection.url">jdbc:mysql://172.20.1.7/poo-campos</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">ospirata</property>
+    
+    <!-- Configuracion del pool interno -->
+    <property name="connection.pool_size">1</property>
+    
+    <!-- Otras propiedades importantes (para que muestre las consultas SQL) -->
+    <property name="show_sql">true</property>
+    <!--<property name="hbm2ddl.auto">create-drop</property>-->
+    
+    <!--Borra todas las tablas y cre nuevamente-->
+    <property name="hbm2ddl.auto">update</property>
+    
+    <!--Crea solo las tablas nuevas (actualiza)-->
+    <!-- Archivos de mapeo (clases que se van a persistir) -->
+    <mapping resource="recursos/hbm/EstadoCampo.hbm.xml"/>
+    <mapping resource="recursos/hbm/TipoSuelo.hbm.xml"/>
+    <mapping resource="recursos/hbm/Campo.hbm.xml"/>
+    <mapping resource="recursos/hbm/Lote.hbm.xml"/>
+    
+  </session-factory>
+</hibernate-configuration>

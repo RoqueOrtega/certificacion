@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="poo.campos.clases.Campo" table="Campos">
+    <id column="id_campo" name="id">
+      <generator class="identity"/>
+    </id>
+    <property name="nombre"/>
+    <property name="superficie" type="java.math.BigDecimal" />
+    
+    <!-- Relaciones con otras clases -->
+    <many-to-one class="poo.campos.clases.EstadoCampo" column="id_estado" name="estado"/>    
+    
+      <bag name="lotes" cascade="all" lazy="false">
+          <key column="id_campo" not-null="true" />
+          <one-to-many class="poo.campos.clases.Lote" />
+      </bag>    
+    
+  </class>
+</hibernate-mapping>
